@@ -16,7 +16,7 @@ const Createcategory = () => {
     const handleonsubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('https://mern-stack-ecommerce-0vdj.onrender.com/v1/category/create-category', {name});
+            const { data } = await axios.post('https://mernstackecommerce-production.up.railway.app/v1/category/create-category', {name});
             if (data?.success) {
                 toast.success(`${name} is Created`)
                 setname("");
@@ -31,7 +31,7 @@ const Createcategory = () => {
     }
     const getallcategories = async () => {
         try {
-            const { data } = await axios.get("https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category");
+            const { data } = await axios.get("https://mernstackecommerce-production.up.railway.app/api/v1/category/get-category");
             if (data?.success) {
                 setcategories(data?.category);
             }
@@ -48,7 +48,7 @@ const Createcategory = () => {
     const handleupdate = async(e)=>{
         e.preventDefault();
         try{
-            const {data}= await axios.put(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/update-category/${selected._id}`,{name:update});
+            const {data}= await axios.put(`https://mernstackecommerce-production.up.railway.app/api/v1/category/update-category/${selected._id}`,{name:update});
             if(data.success){
                 toast.success(`${update} is Updated`);
                 setSelected(null);
@@ -64,7 +64,7 @@ const Createcategory = () => {
     }
     const handledelete = async(pid)=>{
         try{
-            const {data}= await axios.delete(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/delete-category/${pid}`,{name:update});
+            const {data}= await axios.delete(`https://mernstackecommerce-production.up.railway.app/api/v1/category/delete-category/${pid}`,{name:update});
             if(data.success){
                 toast.success("Category is deleted");
                 getallcategories();
