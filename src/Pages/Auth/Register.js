@@ -11,7 +11,7 @@ function Register() {
   const [address,setaddress] = useState("");
   const [password,setpassword] = useState("");
   const navigate = useNavigate();
-
+//submit function
   const handlesubmit = async(e)=>{
     e.preventDefault();
     try{
