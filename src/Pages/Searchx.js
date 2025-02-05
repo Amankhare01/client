@@ -21,7 +21,7 @@ const Searchx = () => {
                 <div className="col" key={p._id}>
                   <div className="card m-3" style={{ width: "18rem" }}>
                     <img
-                      src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
+                      src={`https://mernstackecommerce-production.up.railway.app/api/v1/product/photo-category/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />

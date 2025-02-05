@@ -9,7 +9,7 @@ const Searchinput = () => {
     const handlesubmit=async(e)=>{
         e.preventDefault();
         try{
-            const {data} = await axios.get(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/search/${values.keyword}`)
+            const {data} = await axios.get(`https://mernstackecommerce-production.up.railway.app/api/v1/product/search/${values.keyword}`)
             setvalues({...values, result:data});
             navigate('/search');
         }catch(error){
