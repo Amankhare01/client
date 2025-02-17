@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../component/Layout/Prices";
 import { useCart } from "./context/Cart";
+import '../App.css'
 const Hompage = () => {
   const [cart, setcart] = useCart();
   const navigate = useNavigate();
@@ -116,7 +117,7 @@ const Hompage = () => {
   return (
     <Layout title={"All Products"}>
       <div className="row mt-3">
-        <div className="col-md-3">
+        <div className="col-md-2">
           <h3 className="text-center">Filter by Category</h3>
           <div className="d-flex flex-column m-4">
             {category?.map((c) => (
@@ -151,48 +152,45 @@ const Hompage = () => {
         <div className="col-md-9">
           <h1 className="text-center">All Product List</h1>
           {/* {JSON.stringify(radio, null, 4)} */}
-          <div className="d-flex flex-wrap">
-            {products?.map((p) => (
-              <div className="product-link">
-                <div className="col" key={p._id}>
-                  <div className="card m-3 cardbg-1" style={{ width: "18rem" }}>
-                    <Link key={p._id} to={`/product/${p.slug}`}>
-                      <img
-                        src={`https://mernstackecommerce-production.up.railway.app/api/v1/product/photo-category/${p._id}`}
-                        className="card-img-top"
-                        alt={p.name}
-                      />
-                    </Link>
-                    <div className="card-body">
-                      <h5 className="card-title">{p.name}</h5>
-                      <p className="card-text">{p.description}</p>
-                      <p className="card-text"> ₹ {p.price}</p>
-                      <button
-                        className="btn btn-primary ms-1"
-                        onClick={() => navigate(`/product/${p.slug}`)}
-                      >
-                        More Details
-                      </button>
-                      <button
-                        className="btn btn-secondary ms-1"
-                        onClick={() => {
-                          setcart([...cart, p]);
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify([...cart, p])
-                          );
-                          toast.success("Item added in cart");
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="m-2 p-3">
+          <div className="d-flex flex-wrap justify-content-center">
+  {products?.map((p) => (
+    <div className="product-link" key={p._id}>
+      <div className="card m-3 cardbg-1 product-card">
+        <Link to={`/product/${p.slug}`}>
+          <img
+            src={`https://mernstackecommerce-production.up.railway.app/api/v1/product/photo-category/${p._id}`}
+            className="card-img-top product-image"
+            alt={p.name}
+          />
+        </Link>
+        <div className="card-body">
+          <h5 className="card-title">{p.name}</h5>
+          <p className="card-text text-truncate">{p.description}</p>
+          <p className="card-text"> ₹ {p.price}</p>
+          <button
+            className="btn btn-primary ms-1 mb-3"
+            onClick={() => navigate(`/product/${p.slug}`)}
+          >
+            More Details
+          </button>
+          <button
+            className="btn btn-secondary ms-1"
+            onClick={() => {
+              setcart([...cart, p]);
+              localStorage.setItem("cart", JSON.stringify([...cart, p]));
+              toast.success("Item added in cart");
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+          <div className="m-2 p-3 text-center">
             {products && products.length < total && (
               <button
                 className="btn btn-primary"
