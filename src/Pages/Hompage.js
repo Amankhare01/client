@@ -116,7 +116,7 @@ const Hompage = () => {
   };
   return (
     <Layout title={"All Products"}>
-      <div className="row mt-3">
+      <div className="row mt-3" style={{ '--bs-gutter-x': '0' }}>
         <div className="col-md-2">
           <h3 className="text-center">Filter by Category</h3>
           <div className="d-flex flex-column m-4">
@@ -159,7 +159,7 @@ const Hompage = () => {
         <Link to={`/product/${p.slug}`}>
           <img
             src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
-            className="card-img-top product-image img-fluid"
+            className="card-img-top product-image"
             alt={p.name}
           />
         </Link>
