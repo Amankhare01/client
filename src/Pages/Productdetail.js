@@ -16,7 +16,7 @@ const Productdetail = () => {
   const getproduct = async () => {
     try {
       const { data } = await axios.get(
-        `https://mernstackecommerce-production.up.railway.app/api/v1/product/get-product/${params.slug}`
+        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/get-product/${params.slug}`
       );
       setProducts(data?.product);
     } catch (error) {
@@ -35,7 +35,7 @@ const Productdetail = () => {
       <div className="row">
         <div className="col-md-6">
           <img
-            src={`https://mernstackecommerce-production.up.railway.app/api/v1/product/photo-category/${product._id}`}
+            src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${product._id}`}
             className="card-img-top pd1"
             alt={product.name}
           />

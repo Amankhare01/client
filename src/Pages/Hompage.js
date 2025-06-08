@@ -22,7 +22,7 @@ const Hompage = () => {
   const getallcategories = async () => {
     try {
       const { data } = await axios.get(
-        "https://mernstackecommerce-production.up.railway.app/api/v1/category/get-category"
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setcategories(data?.category);
@@ -40,7 +40,7 @@ const Hompage = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `https://mernstackecommerce-production.up.railway.app/api/v1/product/product-list/${page}`
+        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
       );
       setloading(false);
       if (data.success) {
@@ -58,7 +58,7 @@ const Hompage = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        "https://mernstackecommerce-production.up.railway.app/api/v1/product/product-count"
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-count"
       );
       setTotal(data?.total);
     } catch (error) {
@@ -87,7 +87,7 @@ const Hompage = () => {
       const {
         data,
       } = await axios.post(
-        "https://mernstackecommerce-production.up.railway.app/api/v1/product/product-filter",
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-filter",
         { chacked, radio }
       );
       setProducts(data?.products);
@@ -105,7 +105,7 @@ const Hompage = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `https://mernstackecommerce-production.up.railway.app/api/v1/product/product-list/${page}`
+        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
       );
       setloading(false);
       setProducts([...products, ...data?.products]);
@@ -158,8 +158,8 @@ const Hompage = () => {
       <div className="card m-3 cardbg-1 product-card">
         <Link to={`/product/${p.slug}`}>
           <img
-            src={`https://mernstackecommerce-production.up.railway.app/api/v1/product/photo-category/${p._id}`}
-            className="card-img-top product-image"
+            src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
+            className="card-img-top product-image img-fluid"
             alt={p.name}
           />
         </Link>

@@ -19,7 +19,7 @@ const Createproduct = () => {
 
     const getallcategories = async () => {
         try {
-            const { data } = await axios.get("https://mernstackecommerce-production.up.railway.app/api/v1/category/get-category");
+            const { data } = await axios.get("https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category");
             if (data?.success) {
                 setCategories(data?.category);
             } else {
@@ -45,7 +45,7 @@ const Createproduct = () => {
             productdata.append("quantity", quantity);
             productdata.append("photo", photo);
             productdata.append("category", category);
-            const { data } = await axios.post("https://mernstackecommerce-production.up.railway.app/api/v1/product/create-product", productdata);
+            const { data } = await axios.post("https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/create-product", productdata);
             if (data?.success) {
                 toast.success(data?.message);
             }else{

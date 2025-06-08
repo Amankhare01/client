@@ -15,7 +15,7 @@ function Register() {
   const handlesubmit = async(e)=>{
     e.preventDefault();
     try{
-      const res = await axios.post("https://mernstackecommerce-production.up.railway.app/api/v1/auth/register",{name,email,phone,address,password});
+      const res = await axios.post("https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/auth/register",{name,email,phone,address,password});
       if(res && res.data.success){
         toast.success(res.data.message)
         navigate("/login")
