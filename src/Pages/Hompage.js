@@ -22,7 +22,7 @@ const Hompage = () => {
   const getallcategories = async () => {
     try {
       const { data } = await axios.get(
-        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category"
+        "http://localhost:8080/api/v1/category/get-category"
       );
       if (data?.success) {
         setcategories(data?.category);
@@ -40,7 +40,7 @@ const Hompage = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
+        `http://localhost:8080/api/v1/product/product-list/${page}`
       );
       setloading(false);
       if (data.success) {
@@ -58,7 +58,7 @@ const Hompage = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-count"
+        "http://localhost:8080/api/v1/product/product-count"
       );
       setTotal(data?.total);
     } catch (error) {
@@ -87,7 +87,7 @@ const Hompage = () => {
       const {
         data,
       } = await axios.post(
-        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-filter",
+        "http://localhost:8080/api/v1/product/product-filter",
         { chacked, radio }
       );
       setProducts(data?.products);
@@ -105,7 +105,7 @@ const Hompage = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
+        `http://localhost:8080/api/v1/product/product-list/${page}`
       );
       setloading(false);
       setProducts([...products, ...data?.products]);
@@ -154,38 +154,74 @@ const Hompage = () => {
           {/* {JSON.stringify(radio, null, 4)} */}
           <div className="d-flex flex-wrap justify-content-center">
   {products?.map((p) => (
-    <div className="product-link" key={p._id}>
-      <div className="card m-3 cardbg-1 product-card">
-        <Link to={`/product/${p.slug}`}>
-          <img
-            src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
-            className="card-img-top product-image"
-            alt={p.name}
-          />
-        </Link>
-        <div className="card-body">
-          <h5 className="card-title">{p.name}</h5>
-          <p className="card-text text-truncate">{p.description}</p>
-          <p className="card-text"> ₹ {p.price}</p>
-          <button
-            className="btn btn-primary ms-1 mb-3"
-            onClick={() => navigate(`/product/${p.slug}`)}
-          >
-            More Details
-          </button>
-          <button
-            className="btn btn-secondary ms-1"
-            onClick={() => {
-              setcart([...cart, p]);
-              localStorage.setItem("cart", JSON.stringify([...cart, p]));
-              toast.success("Item added in cart");
-            }}
-          >
-            Add to Cart
-          </button>
-        </div>
-      </div>
+    <div
+  key={p._id}
+  className="card shadow-sm border-0 m-3"
+  style={{
+    width: "18rem",
+    borderRadius: "16px",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+  }}
+>
+  <Link to={`/product/${p.slug}`}>
+    <img
+      src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`}
+      alt={p.name}
+      style={{
+        height: "220px",
+        objectFit: "cover",
+        width: "100%",
+      }}
+    />
+  </Link>
+
+  <div
+    style={{
+      padding: "16px",
+      background: "linear-gradient(90deg, #b1b1b1ff 50%, #4aa1b5ff 100%)",
+      flexGrow: 1,
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    <h5 className="fw-semibold" style={{ marginBottom: "6px" }}>{p.name}</h5>
+    <p
+      className="text-muted small"
+      style={{
+        marginBottom: "6px",
+        minHeight: "40px",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {p.description}
+    </p>
+    <h6 className=" mb-3">₹ {p.price}</h6>
+
+    <div className="d-flex gap-2 mt-auto">
+      <button
+        className="btn btn-outline-dark w-100"
+        onClick={() => navigate(`/product/${p.slug}`)}
+      >
+        View
+      </button>
+      <button
+        className="btn btn-primary w-100"
+        onClick={() => {
+          setcart([...cart, p]);
+          localStorage.setItem("cart", JSON.stringify([...cart, p]));
+          toast.success("Item added to cart");
+        }}
+      >
+        Add
+      </button>
     </div>
+  </div>
+</div>
+
   ))}
 </div>
 

@@ -14,7 +14,7 @@ const Categoryproduct = () => {
     },[params?.slug])
     const getproductbycategory=async(req,res)=>{
         try {
-            const {data} = await axios.get(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-category/${params.slug}`)
+            const {data} = await axios.get(`http://localhost:8080/api/v1/product/product-category/${params.slug}`)
             setproduct(data?.products);
             setcategory(data?.category);
         } catch (error) {
@@ -33,7 +33,7 @@ const Categoryproduct = () => {
                   <div className="card m-3" style={{ width: "18rem" }}>
                     <div key={p._id} to={`/admin/update-product/${p.slug}`}>
                       <img
-                        src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
+                        src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`}
                         className="card-img-top"
                         alt={p.name}
                       />
