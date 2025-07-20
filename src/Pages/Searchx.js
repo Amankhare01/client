@@ -34,7 +34,7 @@ const Searchx = () => {
             <div key={p._id} className="col-md-4 col-lg-3 mb-4">
               <div className="card h-100 shadow-sm">
                 <img
-                  src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`}
+                  src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                   style={{

@@ -22,7 +22,7 @@ const Updateprod = () => {
   const getallcategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-category"
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setcategories(data?.category);
@@ -40,7 +40,7 @@ const Updateprod = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-list/${page}`
+        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
       );
       setloading(false);
       if (data.success) {
@@ -58,7 +58,7 @@ const Updateprod = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/product/product-count"
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-count"
       );
       setTotal(data?.total);
     } catch (error) {
@@ -87,7 +87,7 @@ const Updateprod = () => {
       const {
         data,
       } = await axios.post(
-        "http://localhost:8080/api/v1/product/product-filter",
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-filter",
         { chacked, radio }
       );
       setProducts(data?.products);
@@ -105,7 +105,7 @@ const Updateprod = () => {
     try {
       setloading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-list/${page}`
+        `https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/product-list/${page}`
       );
       setloading(false);
       setProducts([...products, ...data?.products]);
@@ -134,7 +134,7 @@ const Updateprod = () => {
                     >
                       <Link key={p._id} to={`/admin/update-product/${p.slug}`}>
                         <img
-                          src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`}
+                          src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
                         />

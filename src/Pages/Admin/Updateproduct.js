@@ -20,7 +20,7 @@ const Updateproduct = () => {
 
     const getsingleproduct =async()=>{
         try{
-            const {data} = await axios.get(`http://localhost:8080/api/v1/product/get-product/${params.slug}`);
+            const {data} = await axios.get(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/get-product/${params.slug}`);
             setName(data.product.name)
             setId(data.product._id)
             setDescription(data.product.description)
@@ -39,7 +39,7 @@ const Updateproduct = () => {
 
     const getallcategories = async () => {
         try {
-            const { data } = await axios.get("http://localhost:8080/api/v1/category/get-category");
+            const { data } = await axios.get("https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/category/get-category");
             if (data?.success) {
                 setCategories(data?.category);
             } else {
@@ -65,7 +65,7 @@ const Updateproduct = () => {
             productdata.append("quantity", quantity);
             photo && productdata.append("photo", photo);
             productdata.append("category", category);
-            const { data } = await axios.put(`http://localhost:8080/api/v1/product/update-product/${id}`,productdata);
+            const { data } = await axios.put(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/update-product/${id}`,productdata);
             if (data.success) {
                 toast.success(data.message);
             }else{
@@ -81,7 +81,7 @@ const Updateproduct = () => {
         try{
             let answer = window.prompt("Are you sure to delete this product");
             if (!answer) return;
-            const {data} = await axios.delete(`http://localhost:8080/api/v1/product/del-product/${id}`);
+            const {data} = await axios.delete(`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/del-product/${id}`);
             toast.success(data.message)
             Navigate('/admin/products')
         }catch(error){
@@ -119,7 +119,7 @@ const Updateproduct = () => {
                                     <img src={URL.createObjectURL(photo)} alt={'p.name'} height={"200px"} className='img img-responsiv' />
                                 </div>
                             ):(<div className="text-center">
-                            <img src={`http://localhost:8080/api/v1/product/photo-category/${id}`} alt={'p.name'} height={"200px"} className='img img-responsiv' />
+                            <img src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${id}`} alt={'p.name'} height={"200px"} className='img img-responsiv' />
                         </div>)}
                         </div>
                         <div className="mb-3">

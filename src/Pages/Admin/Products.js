@@ -8,7 +8,7 @@ const Products = () => {
 
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get('http://localhost:8080/api/v1/product/get-product');
+            const { data } = await axios.get('https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/get-product');
             if (data.success) {
                 setProducts(data.products);
             } else {
@@ -33,7 +33,7 @@ const Products = () => {
                             <Link key={p._id} to={`/admin/update-product/${p.slug}`} className='product-link' >
                                 <div className="col" key={p._id}>
                                     <div className="card m-3 cardbg-1" style={{ width: '18rem' }}>
-                                        <img src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`} className="card-img-top" alt={p.name} />
+                                        <img src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`} className="card-img-top" alt={p.name} />
                                         <div className="card-body">
                                             <h5 className="card-title">{p.name}</h5>
                                             <p className="card-text">{p.description}</p>

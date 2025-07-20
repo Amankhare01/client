@@ -47,7 +47,7 @@ const Cartpage = () => {
   const getToken = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/product/braintree/token"
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/braintree/token"
       );
       setClientToken(data?.clientToken);
     } catch (error) {
@@ -64,7 +64,7 @@ const Cartpage = () => {
       setLoading(true);
       const { nonce } = await instance?.requestPaymentMethod();
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/product/braintree/payments",
+        "https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/braintree/payments",
         { nonce, cart }
       );
       setLoading(false);
@@ -102,7 +102,7 @@ const Cartpage = () => {
               <div className="row m-2 p-4 card flex-row bg-secondary cartgd-2" key={p._id}>
                 <div className="col-md-4 ">
                   <img
-                    src={`http://localhost:8080/api/v1/product/photo-category/${p._id}`}
+                    src={`https://mern-stack-ecommerce-0vdj.onrender.com/api/v1/product/photo-category/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                     style={{ height: "162px", width: "120px" }}
